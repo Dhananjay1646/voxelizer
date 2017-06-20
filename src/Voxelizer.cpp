@@ -66,9 +66,6 @@ void Voxelizer::voxelize(const std::vector<Eigen::Vector3f>& vertices,
 		Triangle3 face = { Point3(vertices[face_idvec[0]]), Point3(vertices[face_idvec[1]]), 
 			Point3(vertices[face_idvec[2]]) };
 		std::vector<std::pair<size_t, size_t> > interval = getGridInterval(face);
-		std::cout << "xmin " << interval[0].first << " | xmax " << interval[0].second << std::endl;
-		std::cout << "ymin " << interval[1].first << " | ymax " << interval[1].second << std::endl;
-		std::cout << "zmin " << interval[2].first << " | zmax " << interval[2].second << std::endl;
 
 		for (size_t i = interval[0].first; i <= interval[0].second; ++i)
 		{
@@ -177,7 +174,6 @@ void Voxelizer::writeHeader(const std::string& path)
 
 void Voxelizer::save(const std::string& path)
 {
-	//this->writeHeader(path);
 	std::ofstream fs(path, std::ios::out | std::ios::binary);
 	for (size_t i=0; i < data.size(); ++i)
 		for (size_t j=0; j < data[i].size(); ++j)
